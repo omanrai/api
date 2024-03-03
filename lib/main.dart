@@ -1,6 +1,5 @@
+import 'package:api/view/login.dart';
 import 'package:flutter/material.dart';
-
-import 'view/home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter API Demo',
-      home: HomePage(),
+      home: LoginPage(),
     );
   }
 }

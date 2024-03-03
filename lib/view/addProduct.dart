@@ -71,8 +71,34 @@ class _CreateProductState extends State<CreateProduct> {
                 ElevatedButton(
                   onPressed: () {
                     if (key.currentState!.validate()) {
-                      createItem();
-                      print("Record Saved");
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                              title: Text('Confirm Addition'),
+                              content: Text(
+                                  "Are you sure you want to add this item?"),
+                              actions: [
+                                Row(
+                                  children: [
+                                    TextButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text("Cancel")),
+                                    Spacer(),
+                                    TextButton(
+                                        onPressed: () {
+                                          createItem();
+                                          print("Record Saved");
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text("Add")),
+                                  ],
+                                ),
+                              ]);
+                        },
+                      );
                     }
                   },
                   child: Text("create new prodct"),

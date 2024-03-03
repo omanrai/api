@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Product API list'),
+        title: Text('Product API Record'),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
