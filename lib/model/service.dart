@@ -10,6 +10,4 @@ class Service {
 
     return products;
   }
-
-
 }

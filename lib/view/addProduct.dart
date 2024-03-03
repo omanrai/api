@@ -1,10 +1,5 @@
-import 'dart:html';
-
-import 'package:api/model/service.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:http/http.dart' as http;
 
 class CreateProduct extends StatefulWidget {
@@ -16,14 +11,14 @@ class CreateProduct extends StatefulWidget {
 
 class _CreateProductState extends State<CreateProduct> {
   GlobalKey<FormState> key = GlobalKey<FormState>();
-  TextEditingController name = TextEditingController();
+  TextEditingController productName = TextEditingController();
   TextEditingController price = TextEditingController();
   TextEditingController description = TextEditingController();
 
-  void createItem() {
+  Future createItem() async {
     String urlCreate = "http://192.168.1.1:8080/api/createproduct.php";
-    http.post(Uri.parse(urlCreate),
-        body: {'a': name, 'b': price, 'c': description});
+    await http.post(Uri.parse(urlCreate),
+        body: {'a': productName.text, 'b': price.text, 'c': description.text});
   }
 
   @override
@@ -38,7 +33,7 @@ class _CreateProductState extends State<CreateProduct> {
             child: Column(
               children: [
                 TextFormField(
-                  controller: name,
+                  controller: productName,
                   decoration: InputDecoration(
                     labelText: 'Item Name',
                     border: OutlineInputBorder(),
@@ -77,7 +72,7 @@ class _CreateProductState extends State<CreateProduct> {
                   onPressed: () {
                     if (key.currentState!.validate()) {
                       createItem();
-                      print("record saved");
+                      print("Record Saved");
                     }
                   },
                   child: Text("create new prodct"),
